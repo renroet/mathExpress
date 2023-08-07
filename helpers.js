@@ -56,10 +56,7 @@ function mode(nums) {
 
 
 function getNums(req) {
-    if (!req.query.nums) {
-        return new Error('Numbers are required')
-    }
-    // const errors = []
+    
     const n = req.query.nums.split(',')
     const NUMS = n.map(el => {
         const num = parseInt(el);
@@ -70,12 +67,10 @@ function getNums(req) {
             else {  
                 let err = new Error(`${el} is not a number`)
                 return el = err
-                // errors.push(err)          
+                          
         }
         })
-    // if (errors) {
-    //     return errors
-    // }
+    
     return NUMS
     }
 
@@ -86,21 +81,3 @@ module.exports = {
     getNums: getNums
 }
 
-let req = {query: {
-                nums: '1,3,5,foo'
-            }}
-
-console.log(getNums(req))
-
-// {
-// let NUMS = req.map(el => {
-//     if(parseInt(el) !== NaN) {
-//         return parseInt(el)
-//     }
-        
-//     else {   
-//         return new Error(`${el} is not a number`)            
-// }
-// })
-// return NUMS
-// }
